@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "Phoenix Blocker",
+  "description": "Browser extension for Phoenix.",
+  "version": "1.0",
+  "icons": {
+    "48": "images/phoenix.svg",
+    "96": "images/phoenix.svg"
+  },
+    "web_accessible_resources": [
+      "images/*.*",
+      "fonts/*.woff",
+      "scripts/*.*",
+      "df_youtube/scripts/*.*",
+      "df_youtube/css/*.*",
+      "*.html"
+    ],
+    "background": {
+      "scripts": ["scripts/phoenix.js"],
+      "persistent": true,
+      "type": "module"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["df_youtube/scripts/df_youtube.js"]
+      }
+    ],
+  "permissions": ["<all_urls>","tabs", "nativeMessaging", "webNavigation"]
+}
