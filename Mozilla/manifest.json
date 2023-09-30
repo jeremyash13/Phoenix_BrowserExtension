@@ -1,14 +1,14 @@
 {
   "manifest_version": 2,
-  "name": "Phoenix Blocker",
-  "description": "Browser extension for Phoenix.",
-  "version": "1.0",
+  "description": "Browser extension for the Phoenix app.",
+  "version": "1.0.0",
   "icons": {
-    "48": "images/phoenix.svg",
-    "96": "images/phoenix.svg"
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
   },
   "browser_action": {
-      "default_icon": "images/phoenix.svg"
+      "default_icon": "images/icon48.png"
   },
   "browser_specific_settings": {
     "gecko": {
