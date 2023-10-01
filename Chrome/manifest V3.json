@@ -8,26 +8,26 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
-    "action": {
-      "default_icon": "images/phoenix.svg"
-    },
-    "web_accessible_resources": [
-      "images/*.*",
-      "fonts/*.woff",
-      "scripts/*.*",
-      "df_youtube/scripts/*.*",
-      "df_youtube/css/*.*",
-      "*.html"
-    ],
-    "background": {
-      "service_worker": "scripts/phoenix.js",
-      "type": "module"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://www.youtube.com/*"],
-        "js": ["df_youtube/scripts/df_youtube.js"]
-      }
-    ],
+  "action": {
+    "default_icon": "images/icon48.png"
+  },
+  "web_accessible_resources": [
+    "images/*.*",
+    "fonts/*.woff",
+    "scripts/*.*",
+    "df_youtube/scripts/*.*",
+    "df_youtube/css/*.*",
+    "*.html"
+  ],
+  "background": {
+    "service_worker": "scripts/phoenix.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["df_youtube/scripts/df_youtube.js"]
+    }
+  ],
   "permissions": ["<all_urls>","tabs", "nativeMessaging", "webNavigation"]
 }
