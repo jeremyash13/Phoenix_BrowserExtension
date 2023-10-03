@@ -1,5 +1,6 @@
 {
   "manifest_version": 2,
+  "name": "Phoenix Blocker",
   "description": "Browser extension for the Phoenix app.",
   "version": "1.0.0",
   "icons": {
