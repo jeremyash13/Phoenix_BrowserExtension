@@ -34,7 +34,7 @@
       "js": ["df_youtube/scripts/df_youtube.js"]
     }
   ],
-  "permissions": ["tabs", "nativeMessaging", "webNavigation", "storage", "scripting", "alarms"],
+  "permissions": ["tabs", "nativeMessaging", "webNavigation", "storage", "scripting"],
   "host_permissions": [
     "http://*/*",
     "https://*/*",
