@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Phoenix Blocker",
   "description": "Browser extension for the Phoenix app.",
   "version": "1.0.0",
@@ -8,24 +8,36 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
-    "web_accessible_resources": [
-      "images/*.*",
-      "fonts/*.woff",
-      "scripts/*.*",
-      "df_youtube/scripts/*.*",
-      "df_youtube/css/*.*",
-      "*.html"
-    ],
-    "background": {
-      "scripts": ["scripts/phoenix.js"],
-      "persistent": true,
-      "type": "module"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://www.youtube.com/*"],
-        "js": ["df_youtube/scripts/df_youtube.js"]
-      }
-    ],
-  "permissions": ["<all_urls>","tabs", "nativeMessaging", "webNavigation"]
+  "action": {
+    "default_icon": "images/icon48.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/*.*",
+        "fonts/*.woff",
+        "scripts/*.*",
+        "df_youtube/scripts/*.*",
+        "df_youtube/css/*.*",
+        "*.html"
+      ],
+      "matches":[ "<all_urls>" ]
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/phoenix.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["df_youtube/scripts/df_youtube.js"]
+    }
+  ],
+  "permissions": ["tabs", "nativeMessaging", "webNavigation", "storage", "scripting", "alarms"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "file://*/*"
+  ]
 }
