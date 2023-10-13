@@ -1,6 +1,6 @@
-var url = chrome.extension.getURL("blocked-page.html");
-let fontRecoleta = new FontFace("Recoleta", chrome.extension.getURL("fonts/Recoleta Regular.woff"));
-let fontWorkSans = new FontFace("WorkSans", chrome.extension.getURL("fonts/WorkSans-Light.woff"));
+var url = chrome.runtime.getURL("blocked-page.html");
+let fontRecoleta = new FontFace("Recoleta", chrome.runtime.getURL("fonts/Recoleta Regular.woff"));
+let fontWorkSans = new FontFace("WorkSans", chrome.runtime.getURL("fonts/WorkSans-Light.woff"));
 
 
 setTimeout(() => {

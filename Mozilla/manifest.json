@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
-  "description": "Browser extension for the Phoenix app.",
+  "name": "Phoenix Blocker",
+  "description": "Browser extension add-on for the Phoenix desktop application. Users should only install this extension if they own Phoenix.",
   "version": "1.0.0",
   "icons": {
     "16": "images/icon16.png",
