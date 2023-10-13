@@ -1,5 +1,6 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
+  "name": "Phoenix Blocker",
   "description": "Browser extension for the Phoenix app.",
   "version": "1.0.0",
   "icons": {
@@ -7,14 +8,8 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
-  "browser_action": {
-      "default_icon": "images/icon48.png"
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "phoenix.blocker@phoenix.org",
-      "strict_min_version": "50.0"
-    }
+  "action": {
+    "default_icon": "images/icon48.png"
   },
   "web_accessible_resources": [
     "images/*.*",
@@ -25,8 +20,7 @@
     "*.html"
   ],
   "background": {
-    "scripts": ["scripts/phoenix.js"],
-    "persistent": true,
+    "service_worker": "scripts/phoenix.js",
     "type": "module"
   },
   "content_scripts": [

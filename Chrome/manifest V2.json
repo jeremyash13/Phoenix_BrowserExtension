@@ -8,6 +8,9 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
+    "action": {
+      "default_icon": "images/phoenix.svg"
+    },
     "web_accessible_resources": [
       "images/*.*",
       "fonts/*.woff",
