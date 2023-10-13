@@ -1,32 +1,37 @@
 {
-  "manifest_version": 2,
-  "description": "Browser extension for the Phoenix app.",
+  "manifest_version": 3,
+  "name": "Phoenix Blocker",
+  "description": "Browser extension add-on for the Phoenix desktop application.",
   "version": "1.0.0",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
-  "browser_action": {
+  "action": {
       "default_icon": "images/icon48.png"
   },
   "browser_specific_settings": {
     "gecko": {
       "id": "phoenix.blocker@phoenix.org",
-      "strict_min_version": "50.0"
+      "strict_min_version": "115.0"
     }
   },
   "web_accessible_resources": [
-    "images/*.*",
-    "fonts/*.woff",
-    "scripts/*.*",
-    "df_youtube/scripts/*.*",
-    "df_youtube/css/*.*",
-    "*.html"
+    {
+      "resources": [
+        "images/*.*",
+        "fonts/*.woff",
+        "scripts/*.*",
+        "df_youtube/scripts/*.*",
+        "df_youtube/css/*.*",
+        "*.html"
+      ],
+      "matches":[ "<all_urls>" ]
+    }
   ],
   "background": {
     "scripts": ["scripts/phoenix.js"],
-    "persistent": true,
     "type": "module"
   },
   "content_scripts": [
@@ -35,5 +40,10 @@
       "js": ["df_youtube/scripts/df_youtube.js"]
     }
   ],
-  "permissions": ["<all_urls>","tabs", "nativeMessaging", "webNavigation"]
+  "permissions": ["tabs", "nativeMessaging", "webNavigation", "storage", "scripting"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "file://*/*"
+  ]
 }
