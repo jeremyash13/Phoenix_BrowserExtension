@@ -1,4 +1,4 @@
-let links = {
+var links = {
 		nodes: [],
 		hrefs: []
 	},
@@ -8,9 +8,13 @@ let links = {
 	refreshFeed = false;
 	
 console.log('DF Tube script');
+chrome.runtime.sendMessage({query: 'dfyt_get_options'}, function(response) {
+	options = response.options;
+	refreshFeed = options.active && options.visibility.hideFeed;
+	initiate();
+});
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	console.log(request);
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.query === 'dfyt_update_view')
 	{
 		options = request.options;
@@ -24,20 +28,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	}
 });
 
-
-chrome.runtime.sendMessage({query: 'dfyt_get_options'}, (response) => {
-	// ITS NECESSARY FOR THE CONTENT SCRIPT TO QUERY THE BACKGROUND/SERVICE-WORKER, 
-	// SO WHENEVER A NEW YOUTUBE TAB IS OPENED IT FETCHES THE EXTENSION STATE...
-	options = response.options;
-	refreshFeed = options.active && options.visibility.hideFeed;
-	initiate();
-});
-
 function initiate() {
 	console.log('initiating DF Tube')
 	document.getElementsByTagName("html")[0].style.display = "";
 	if (options.active) {
-		// set_process_page_timer();
+		set_process_page_timer();
 		activate_df_youtube();
 	} else {
 		deactivate_df_youtube();
@@ -356,13 +351,13 @@ function set_hide_non_lists(hide) {
 }
 
 function add_css(file) {
-	var checkLink = document.querySelector('link[href="' + chrome.runtime.getURL("df_youtube/css/" + file) + '"]'),
+	var checkLink = document.querySelector('link[href="' + chrome.extension.getURL("df_youtube/css/" + file) + '"]'),
 		link;
 	
 	if (checkLink === null)
 	{
 		link = document.createElement("link");
-		link.href = chrome.runtime.getURL("df_youtube/css/" + file);
+		link.href = chrome.extension.getURL("df_youtube/css/" + file);
 		link.type = "text/css";
 		link.rel = "stylesheet";
 		link.media = "screen,print";
@@ -371,7 +366,7 @@ function add_css(file) {
 }
 
 function remove_css(file) {
-	var link = document.querySelectorAll('link[href="' + chrome.runtime.getURL("df_youtube/css/" + file) + '"]');
+	var link = document.querySelectorAll('link[href="' + chrome.extension.getURL("df_youtube/css/" + file) + '"]');
 
 	if (link.length > 0)
 	{
